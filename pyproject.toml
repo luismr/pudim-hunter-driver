@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pudim-hunter-driver"
-version = "0.1.0"
+version = "0.0.1"
 description = "Common interface for implementing job search drivers for The Pudim Hunter platform"
 readme = "README.md"
 requires-python = ">=3.9"
