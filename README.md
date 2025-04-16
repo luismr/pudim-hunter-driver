@@ -8,6 +8,7 @@
 ## Table of Contents
 - [Features](#features)
 - [Usage](#usage)
+  - [Installation](#installation)
   - [Interface Overview](#interface-overview)
 - [Project Structure](#project-structure)
 - [Installation](#installation)
@@ -36,11 +37,35 @@ A Python package that provides a common interface for implementing job search dr
 
 ## Usage
 
-This package provides the base interface and models for implementing job search drivers. To create a driver for a specific job board, you'll need to create a new package that depends on `pudim-hunter-driver` and implement the `JobDriver` interface.
+### Installation
+
+You can install the package from GitHub Packages. First, you'll need to authenticate with GitHub:
+
+1. Create a [Personal Access Token](https://github.com/settings/tokens) with `read:packages` scope
+2. Configure pip to use GitHub Packages:
+
+```bash
+# Create or edit ~/.pip/pip.conf (Linux/Mac) or %APPDATA%\pip\pip.ini (Windows)
+[global]
+extra-index-url=https://USERNAME:TOKEN@github.com/luismr/pudim-hunter-driver
+```
+
+Then you can install the package:
+
+```bash
+# Install directly using pip
+pip install pudim-hunter-driver
+
+# Or add to your requirements.txt
+# requirements.txt
+pudim-hunter-driver>=1.0.0  # Replace with the version you need
+```
+
+For development installations, see the [Development](#development) section.
 
 ### Interface Overview
 
-The package provides:
+This package provides the base interface and models for implementing job search drivers. To create a driver for a specific job board, you'll need to create a new package that depends on `pudim-hunter-driver` and implement the `JobDriver` interface.
 
 1. `JobDriver` (ABC) - The base interface that all drivers must implement:
    - `async fetch_jobs(query: JobQuery) -> JobList`
