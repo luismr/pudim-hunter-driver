@@ -31,6 +31,6 @@ jobs:
 
     - name: Publish package to GitHub Packages
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
       run: |
-        python -m twine upload --verbose --username __token__ --password ${{ secrets.GITHUB_TOKEN }} --repository-url https://upload.pypi.github.com/ dist/*
+        python -m twine upload --verbose --username __token__ --password ${{ secrets.PYPI_TOKEN }} --repository-url https://upload.pypi.org/legacy/ dist/*
