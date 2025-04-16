@@ -12,10 +12,10 @@ with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
 setup(
-    name="pudim-hunter-driver",
+    name="pudim_hunter_driver",
     version=get_version(),
     description="Common interface for implementing job search drivers for The Pudim Hunter platform",
-    author="The Pudim Hunter Team",
+    author="Luis Machado Reis",
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     python_requires=">=3.9",
