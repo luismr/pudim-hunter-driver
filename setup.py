@@ -6,7 +6,10 @@ def get_version():
     version = os.environ.get('GITHUB_REF', '')
     if version.startswith('refs/tags/v'):
         return version.split('/')[-1][1:]  # Remove 'v' prefix
-    return "0.1.0"  # Default version
+    return "0.0.1" 
+
+with open('requirements.txt') as f:
+    requirements = f.read().splitlines()
 
 setup(
     name="pudim-hunter-driver",
@@ -16,11 +19,7 @@ setup(
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     python_requires=">=3.9",
-    install_requires=[
-        "pydantic>=2.5.0",
-        "python-dateutil>=2.8.2",
-        "typing-extensions>=4.8.0",
-    ],
+    install_requires=requirements,
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
