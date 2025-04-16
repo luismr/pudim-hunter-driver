@@ -35,10 +35,10 @@ jobs:
         echo "[github]" >> ~/.pypirc
         echo "repository = https://upload.pkg.github.com/luismr/pudim-hunter-driver" >> ~/.pypirc
         echo "username = __token__" >> ~/.pypirc
-        echo "password = ${{ secrets.PYPI_TOKEN }}" >> ~/.pypirc
+        echo "password = ${{ secrets.PUBLISH_GITHUB_PACKAGES_TOKEN }}" >> ~/.pypirc
 
     - name: Publish package to GitHub Packages
       env:
-        GITHUB_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PUBLISH_GITHUB_PACKAGES_TOKEN }}
       run: |
         python -m twine upload -r github dist/* 
