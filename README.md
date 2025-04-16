@@ -4,6 +4,7 @@
 [![Pytest 7.4](https://img.shields.io/badge/pytest-7.4-brightgreen.svg)](https://docs.pytest.org/en/7.4.x/)
 [![CI](https://github.com/luismr/pudim-hunter-driver/actions/workflows/ci.yml/badge.svg)](https://github.com/luismr/pudim-hunter-driver/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/luismr/pudim-hunter-driver/branch/main/graph/badge.svg)](https://codecov.io/gh/luismr/pudim-hunter-driver)
+[![PyPI version](https://badge.fury.io/py/pudim-hunter-driver.svg)](https://pypi.org/project/pudim-hunter-driver/)
 
 ## Table of Contents
 - [Features](#features)
@@ -39,26 +40,14 @@ A Python package that provides a common interface for implementing job search dr
 
 ### Installation
 
-You can install the package from GitHub Packages. First, you'll need to authenticate with GitHub:
-
-1. Create a [Personal Access Token](https://github.com/settings/tokens) with `read:packages` scope
-2. Configure pip to use GitHub Packages:
-
-```bash
-# Create or edit ~/.pip/pip.conf (Linux/Mac) or %APPDATA%\pip\pip.ini (Windows)
-[global]
-extra-index-url=https://USERNAME:TOKEN@upload.pkg.github.com/luismr/pudim-hunter-driver/simple/
-```
-
-Then you can install the package:
+You can install the package directly from PyPI:
 
 ```bash
 # Install directly using pip
 pip install pudim-hunter-driver
 
 # Or add to your requirements.txt
-# requirements.txt
-pudim-hunter-driver>=0.0.1  # Replace with the version you need
+pudim-hunter-driver>=0.0.2  # Replace with the version you need
 ```
 
 For development installations, see the [Development](#development) section.

@@ -6,7 +6,7 @@ def get_version():
     version = os.environ.get('GITHUB_REF', '')
     if version.startswith('refs/tags/v'):
         return version.split('/')[-1][1:]  # Remove 'v' prefix
-    return "0.0.1" 
+    return "0.0.2" 
 
 with open('requirements.txt') as f:
     requirements = f.read().splitlines()
