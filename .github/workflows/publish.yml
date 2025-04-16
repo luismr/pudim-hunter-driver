@@ -28,11 +28,17 @@ jobs:
     - name: Build package
       run: python -m build
 
+    - name: Configure PyPI
+      run: |
+        echo "[distutils]" > ~/.pypirc
+        echo "index-servers = github" >> ~/.pypirc
+        echo "[github]" >> ~/.pypirc
+        echo "repository = https://upload.pkg.github.com/luismr/pudim-hunter-driver" >> ~/.pypirc
+        echo "username = __token__" >> ~/.pypirc
+        echo "password = ${{ secrets.GITHUB_TOKEN }}" >> ~/.pypirc
+
     - name: Publish package to GitHub Packages
       env:
-        TWINE_USERNAME: __token__
-        TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        python -m twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
-        python -m twine upload --repository-url https://github.com/luismr/pudim-hunter-driver dist/* 
+        python -m twine upload -r github dist/* 

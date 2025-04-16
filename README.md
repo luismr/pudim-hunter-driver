@@ -47,7 +47,7 @@ You can install the package from GitHub Packages. First, you'll need to authenti
 ```bash
 # Create or edit ~/.pip/pip.conf (Linux/Mac) or %APPDATA%\pip\pip.ini (Windows)
 [global]
-extra-index-url=https://USERNAME:TOKEN@github.com/luismr/pudim-hunter-driver
+extra-index-url=https://USERNAME:TOKEN@upload.pkg.github.com/luismr/pudim-hunter-driver/simple/
 ```
 
 Then you can install the package:
@@ -58,7 +58,7 @@ pip install pudim-hunter-driver
 
 # Or add to your requirements.txt
 # requirements.txt
-pudim-hunter-driver>=1.0.0  # Replace with the version you need
+pudim-hunter-driver>=0.0.1  # Replace with the version you need
 ```
 
 For development installations, see the [Development](#development) section.
