@@ -32,5 +32,5 @@ jobs:
     - name: Publish package distributions to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        username: __token__
+        user: __token__
         password: ${{ secrets.PYPI_TOKEN }}
