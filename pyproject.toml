@@ -38,9 +38,6 @@ dependencies = {file = "requirements.txt"}
 
 [tool.setuptools_scm]
 write_to = "src/pudim_hunter_driver/_version.py"
-tag_regex = '^(?P<prefix>v)?(?P<version>[^\+]+)(?P<suffix>.*)?$'
-local_scheme = "no-local-version"
-fallback_version = "0.0.0"
 
 [tool.black]
 line-length = 88
