@@ -6,18 +6,19 @@ def normalize_branch_name(name):
     return name.lower().replace('/', '_').replace('-', '_')
 
 def local_scheme(version):
+    """Custom version scheme that uses branch name, date, and short hash"""
     if version.exact:
         return version.format_with("{tag}")
     node = version.node[:5] if version.node else 'UNKNOWN'
     branch = normalize_branch_name(version.branch) if version.branch else 'unknown'
     date = version.time.strftime('%Y%m%d') if version.time else ''
-    return f"{branch}-{date}-{node}"
+    return f"pudim_hunter_driver-{branch}-{date}-{node}"
 
 def version_scheme(version):
-    """Custom version scheme that only uses the branch name and date"""
+    """Custom version scheme that returns empty string for non-tagged versions"""
     if version.exact:
         return version.format_with("{tag}")
-    return ""  # Empty base version to only use local version
+    return ""
 
 setup(
     use_scm_version={
