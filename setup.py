@@ -13,9 +13,15 @@ def local_scheme(version):
     date = version.time.strftime('%Y%m%d') if version.time else ''
     return f"{branch}-{date}-{node}"
 
+def version_scheme(version):
+    """Custom version scheme that only uses the branch name and date"""
+    if version.exact:
+        return version.format_with("{tag}")
+    return "0.0.0"  # Base version when no tag is available
+
 setup(
     use_scm_version={
-        "version_scheme": "release-branch-semver",
+        "version_scheme": version_scheme,
         "local_scheme": local_scheme,
         "write_to": "src/pudim_hunter_driver/_version.py",
         "tag_regex": r'^(?P<prefix>v)?(?P<version>[^\+]+)(?P<suffix>.*)?$'
