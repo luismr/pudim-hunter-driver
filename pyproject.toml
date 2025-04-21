@@ -1,17 +1,23 @@
 [build-system]
-requires = ["setuptools>=45", "wheel"]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=8.0.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pudim_hunter_driver"
-version = "0.0.2"
+name = "pudim-hunter-driver"
+dynamic = ["version"]
 description = "Common interface for implementing job search drivers for The Pudim Hunter platform"
 readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
 authors = [
-    {name = "Luis Machado Reis"}
+    {name = "The Pudim Hunter Team", email = "luis.reis@gmail.com"}
 ]
+
+[tool.setuptools_scm]
+version_scheme = "post-release"
+local_scheme = "node-and-date"
+write_to = "src/pudim_hunter_driver/_version.py"
+fallback_version = "0.0.1.dev0"
 
 [tool.black]
 line-length = 88
