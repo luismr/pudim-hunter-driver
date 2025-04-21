@@ -8,23 +8,30 @@ def normalize_branch_name(name):
 def local_scheme(version):
     """Custom version scheme that uses branch name, date, and short hash"""
     if version.exact:
-        return version.format_with("{tag}")
+        return ""
     node = version.node[:5] if version.node else 'UNKNOWN'
     branch = normalize_branch_name(version.branch) if version.branch else 'unknown'
     date = version.time.strftime('%Y%m%d') if version.time else ''
-    return f"pudim_hunter_driver-{branch}-{date}-{node}"
+    return f"{branch}-{date}-{node}"
 
 def version_scheme(version):
-    """Custom version scheme that returns empty string for non-tagged versions"""
+    """Custom version scheme that handles both tagged and non-tagged versions"""
     if version.exact:
-        return version.format_with("{tag}")
-    return ""
+        # Remove 'v' prefix if present
+        tag = version.tag.base_version
+        if tag.startswith('v'):
+            tag = tag[1:]
+        return tag
+    
+    # For non-tagged versions, use branch name and commit hash
+    return f"0.0.0+{local_scheme(version)}"
 
 setup(
     use_scm_version={
         "version_scheme": version_scheme,
-        "local_scheme": local_scheme,
+        "local_scheme": lambda _: "",  # We handle local version in version_scheme
         "write_to": "src/pudim_hunter_driver/_version.py",
-        "tag_regex": r'^(?P<prefix>v)?(?P<version>[^\+]+)(?P<suffix>.*)?$'
+        "tag_regex": r'^(?P<prefix>v)?(?P<version>[^\+]+)(?P<suffix>.*)?$',
+        "relative_to": __file__,
     }
 ) 

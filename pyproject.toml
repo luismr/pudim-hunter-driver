@@ -37,9 +37,12 @@ include = ["pudim_hunter_driver*"]
 dependencies = {file = "requirements.txt"}
 
 [tool.setuptools_scm]
-# version_scheme and local_scheme are defined in setup.py
 write_to = "src/pudim_hunter_driver/_version.py"
-tag_regex = "^(?P<prefix>v)?(?P<version>[^\\+]+)(?P<suffix>.*)?$"
+git_describe_command = "git describe --tags --long"
+tag_regex = '^(?P<prefix>v)?(?P<version>[^\+]+)(?P<suffix>.*)?$'
+fallback_version = "0.0.0"
+version_scheme = "python-simplified-semver"
+local_scheme = "no-local-version"
 
 [tool.black]
 line-length = 88
