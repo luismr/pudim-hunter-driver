@@ -4,20 +4,43 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pudim-hunter-driver"
-dynamic = ["version"]
+dynamic = ["version", "dependencies"]
 description = "Common interface for implementing job search drivers for The Pudim Hunter platform"
 readme = "README.md"
 requires-python = ">=3.9"
-license = {text = "MIT"}
+license = "MIT"
+license-files = ["LICENSE.md"]
 authors = [
     {name = "The Pudim Hunter Team", email = "luis.reis@gmail.com"}
 ]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+[project.urls]
+Source = "https://github.com/luismr/pudim-hunter-driver"
+"Bug Tracker" = "https://github.com/luismr/pudim-hunter-driver/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["pudim_hunter_driver*"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = "requirements.txt"}
 
 [tool.setuptools_scm]
-version_scheme = "guess-next-dev"
-local_scheme = "no-local-version"
+version_scheme = "release-branch-semver"
+# local_scheme is defined in setup.py
 write_to = "src/pudim_hunter_driver/_version.py"
-fallback_version = "0.0.1"
+tag_regex = "^(?P<prefix>v)?(?P<version>[^\\+]+)(?P<suffix>.*)?$"
 
 [tool.black]
 line-length = 88
