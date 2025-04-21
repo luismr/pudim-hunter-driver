@@ -7,7 +7,7 @@ def normalize_branch_name(name):
 
 def local_scheme(version):
     if version.exact:
-        return ''
+        return version.format_with("{tag}")
     node = version.node[:5] if version.node else 'UNKNOWN'
     branch = normalize_branch_name(version.branch) if version.branch else 'unknown'
     date = version.time.strftime('%Y%m%d') if version.time else ''
@@ -17,7 +17,7 @@ def version_scheme(version):
     """Custom version scheme that only uses the branch name and date"""
     if version.exact:
         return version.format_with("{tag}")
-    return "0.0.0"  # Base version when no tag is available
+    return ""  # Empty base version to only use local version
 
 setup(
     use_scm_version={
