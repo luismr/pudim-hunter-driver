@@ -26,10 +26,10 @@ except FileNotFoundError:
 setup(
     name="pudim-hunter-driver",
     use_scm_version={
-        "version_scheme": "post-release",
-        "local_scheme": "node-and-date",
+        "version_scheme": "guess-next-dev",
+        "local_scheme": "no-local-version",
         "write_to": "src/pudim_hunter_driver/_version.py",
-        "fallback_version": "0.0.1.dev0"
+        "fallback_version": "0.0.1"
     },
     description="Common interface for implementing job search drivers for The Pudim Hunter platform",
     long_description=long_description,
