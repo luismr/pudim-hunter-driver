@@ -18,9 +18,11 @@ class Job(BaseModel):
     title: str
     company: str
     location: str
-    description: str
+    summary: str
+    description: Optional[str] = None
     url: str
     salary_range: Optional[str] = None
+    qualifications: Optional[List[str]] = None
     remote: bool = False
     posted_at: datetime
     source: str = Field(..., description="The job board source (e.g., 'LinkedIn', 'Indeed')")

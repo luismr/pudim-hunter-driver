@@ -44,4 +44,29 @@ target-version = ['py39']
 
 [tool.isort]
 profile = "black"
-multi_line_output = 3 
+multi_line_output = 3
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --cov=src/pudim_hunter_driver --cov-report=xml --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["src/pudim_hunter_driver"]
+omit = [
+    "*/tests/*",
+    "*/__init__.py",
+    "*/_version.py"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "pass",
+    "raise ImportError",
+    "@abstractmethod"
+] 

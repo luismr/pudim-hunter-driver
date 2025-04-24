@@ -57,8 +57,8 @@ For development installations, see the [Development](#development) section.
 This package provides the base interface and models for implementing job search drivers. To create a driver for a specific job board, you'll need to create a new package that depends on `pudim-hunter-driver` and implement the `JobDriver` interface.
 
 1. `JobDriver` (ABC) - The base interface that all drivers must implement:
-   - `async fetch_jobs(query: JobQuery) -> JobList`
-   - `async validate_credentials() -> bool`
+   - `fetch_jobs(query: JobQuery) -> JobList`
+   - `validate_credentials() -> bool`
 
 2. Data Models:
    - `JobQuery` - Search parameters
@@ -82,11 +82,11 @@ from pudim_hunter_driver.models import Job, JobList, JobQuery
 from pudim_hunter_driver.exceptions import AuthenticationError
 
 class MyJobBoardDriver(JobDriver):
-    async def validate_credentials(self) -> bool:
+    def validate_credentials(self) -> bool:
         # Implement your authentication logic
         return True
 
-    async def fetch_jobs(self, query: JobQuery) -> JobList:
+    def fetch_jobs(self, query: JobQuery) -> JobList:
         # Implement your job search logic
         jobs = [
             Job(
@@ -94,8 +94,22 @@ class MyJobBoardDriver(JobDriver):
                 title="Python Developer",
                 company="Example Corp",
                 location="Remote",
-                description="Join our team!",
+                summary="Exciting opportunity for a Python Developer",
+                description="""Join our team as a Python Developer! We're looking for someone with strong programming skills and passion for clean code.
+
+Key Responsibilities:
+- Develop and maintain Python applications
+- Write clean, maintainable, and efficient code
+- Collaborate with cross-functional teams
+- Participate in code reviews
+- Implement best practices and coding standards""",
                 url="https://example.com/jobs/1",
+                salary_range="$80,000 - $120,000",
+                qualifications=[
+                    "3+ years Python experience",
+                    "Experience with web frameworks",
+                    "Strong problem-solving skills"
+                ],
                 remote=True,
                 posted_at=datetime.now(),
                 source="MyJobBoard"
