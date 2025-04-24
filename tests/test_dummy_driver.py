@@ -48,7 +48,7 @@ def test_fetch_jobs_basic_search(driver):
     assert job.source == "DummyJobs"
 
 
-def test_fetch_jobs_with_location(driver):
+def test_fetch_jobs_with_location_filter(driver):
     """Test job search with location filter."""
     query = JobQuery(keywords="Python", location="New York")
     result = driver.fetch_jobs(query)
