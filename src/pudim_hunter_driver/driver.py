@@ -11,7 +11,7 @@ class JobDriver(ABC):
     """
     
     @abstractmethod
-    async def fetch_jobs(self, query: JobQuery) -> JobList:
+    def fetch_jobs(self, query: JobQuery) -> JobList:
         """
         Fetch jobs from the job board based on the provided query.
         
@@ -27,7 +27,7 @@ class JobDriver(ABC):
         pass
     
     @abstractmethod
-    async def validate_credentials(self) -> bool:
+    def validate_credentials(self) -> bool:
         """
         Validate if the driver has valid credentials to access the job board.
         
